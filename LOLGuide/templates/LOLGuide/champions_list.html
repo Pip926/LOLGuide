@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Архив Рунтерры | Список персонажей</title>
+    <link rel="stylesheet" href="{% static 'LOLGuide/css/champions_list.css' %}">
+</head>
+<body class="champions-list-body">
+    <a href="{% url 'index' %}" class="btn-back">НАЗАД</a>
+
+    <main class="viewport-wrapper">
+        
+        <aside class="sidebar-champions"></aside>
+
+        <button class="nav-btn up" id="scrollUp">↑</button>
+        <button class="nav-btn down" id="scrollDown">↓</button>
+
+        <section class="champions-container">
+            {% for champion in champions %}
+            <article class="champion-card">
+                <a href="{% url 'champion_detail' champion.id %}" class="champion-link">
+                    <div class="champion-visual">
+                        <img src="{{ champion.image_icon.url }}" alt="{{ champion.name }}" class="champion-img">
+                    </div>
+
+                    <header class="champion-header">
+                        <h2 class="champion-name">{{ champion.name }}</h2>
+                    </header>
+                </a>
+            </article>
+            {% endfor %}
+        </section>
+    </main>
+
+    <script src="{% static 'LOLGuide/js/champions_list.js' %}"></script>
+</body>
+</html>

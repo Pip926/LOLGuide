@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Архив Рунтерры | {{ weapon.get_name_display }}</title>
+    <link rel="stylesheet" href="{% static 'LOLGuide/css/item_detail.css' %}">
+</head>
+<body class="item-page-body">
+    <a href="{% url 'items_list' %}" class="btn-back">НАЗАД</a>
+
+
+    <div class="background-map"></div>
+
+    <main class="item-detail-layout">
+        
+        <a href="/items/" class="back-link">НАЗАД</a>
+
+        <div class="item-icon-frame">
+            <img src="{{ item.image.url }}" alt="{{ item.name }}">
+        </div>
+
+        <header class="item-name-card">
+            <h1>{{ item.name }}</h1>
+        </header>
+
+        <section class="item-stats-card">
+            <div class="stats-content">
+                {{ item.stat_display|linebreaks }}
+            </div>
+        </section>
+
+        <section class="item-lore-card">
+            <div class="lore-scroll-box">
+                {{ item.origin_story|linebreaks }}
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>

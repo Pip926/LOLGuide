@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Архив Рунтерры | Эпические монстры</title>
+    <link rel="stylesheet" href="{% static 'LOLGuide/css/boss_monsters_list.css' %}">
+</head>
+<body class="boss-list-body">
+    <a href="{% url 'monsters_hub' %}" class="btn-back">НАЗАД</a>
+    <main class="viewport-wrapper">
+        
+        <aside class="sidebar-jungle"></aside>
+
+        <button class="nav-btn prev" id="prevBtn">←</button>
+        <button class="nav-btn next" id="nextBtn">→</button>
+
+        <section class="boss-container">
+            {% for boss in bosses %}
+            <article class="boss-item">
+                <a href="{% url 'boss_detail' boss.id %}" class="boss-link">
+                    <div class="boss-visual">
+                        <img src="{{ boss.image.url }}" alt="{{ boss.name }}" class="boss-img">
+                    </div>
+
+                    <header class="boss-header">
+                        <h2 class="boss-name">{{ boss.name }}</h2>
+                    </header>
+                </a>
+            </article>
+            {% endfor %}
+        </section>
+    </main>
+
+    <script src="{% static 'LOLGuide/js/boss_monsters_list.js' %}"></script>
+</body>
+</html>

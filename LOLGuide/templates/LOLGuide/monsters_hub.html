@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Архив Рунтерры | Логово монстров</title>
+    <link rel="stylesheet" href="{% static 'LOLGuide/css/monsters_hub.css' %}">
+</head>
+<body class="hub-page">
+    <a href="{% url 'index' %}" class="btn-back">НАЗАД</a>
+    <main class="hub-container">
+        <a href="{% url 'common_monsters_list' %}" class="monster-card card-common">
+            <div class="card-inner">
+                <div class="card-art"></div> <div class="card-title-plate">
+                    <h2>ЛЕСНЫЕ ЖИТЕЛИ</h2>
+                </div>
+
+                <div class="card-description">
+                    <p>Просмотреть обычных лесных жителей, их статы, лор и награды за убийство</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="{% url 'boss_monsters_list' %}" class="monster-card card-boss">
+            <div class="card-inner">
+                <div class="card-art"></div> <div class="card-title-plate">
+                    <h2>ЭПИЧЕСКИЕ МОНСТРЫ</h2>
+                </div>
+
+                <div class="card-description">
+                    <p>Просмотреть опасных эпических монстров, их статы, лор и вознаграждение в виде золота и баффов за их убийство</p>
+                </div>
+            </div>
+        </a>
+    </main>
+</body>
+</html>

@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="stylesheet" href="{% static 'LOLGuide/css/auth.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Архив Рунтерры | Авторизация</title>
+</head>
+<body class="auth-page">
+    <div class="auth-wrapper">
+        <div class="auth-content">
+            <div class="character-layer">
+                <div class="poppy-art"></div>
+                <div class="glow-effect"></div>
+            </div>
+
+            <main class="auth-card">
+                <nav class="auth-tabs">
+                    <button class="tab-btn active" data-tab="login" onclick="switchTab('login')">ВХОД</button>
+                    <button class="tab-btn" data-tab="register" onclick="switchTab('register')">РЕГИСТРАЦИЯ</button>
+                </nav>
+                
+                <div class="form-container">
+                    <form method="post" id="login-form" class="auth-form">
+                        {% csrf_token %}
+                        {% if login_form.errors %}
+                            <p style="color: #ff4e4e; font-size: 11px;">Неверное имя или пароль</p>
+                        {% endif %}
+                        <p>
+                            <label>ИМЯ ПОЛЬЗОВАТЕЛЯ</label>
+                            <input type="text" name="username" required>
+                        </p>
+                        <p>
+                            <label>ПАРОЛЬ</label>
+                            <input type="password" name="password" required>
+                        </p>
+                        <button type="submit" name="login_submit" class="btn-primary">ПОДТВЕРДИТЬ</button>
+                    </form>
+
+                    <form method="post" id="register-form" class="auth-form" style="display: none;">
+                        {% csrf_token %}
+                        
+                        {% if register_form.errors %}
+                            <div class="error-box" style="color: #ff4e4e; font-size: 11px; margin-bottom: 10px;">
+                                {% for field in register_form %}
+                                    {% for error in field.errors %}
+                                        <p>• {{ error }}</p>
+                                    {% endfor %}
+                                {% endfor %}
+                                {% for error in register_form.non_field_errors %}
+                                    <p>• {{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        <p>
+                            <label>ИМЯ ПОЛЬЗОВАТЕЛЯ</label>
+                            <input type="text" name="username" required>
+                        </p>
+                        <p>
+                            <label>ЭЛЕКТРОННАЯ ПОЧТА</label>
+                            <input type="email" name="email" required>
+                        </p>
+                        <p>
+                            <label>ПАРОЛЬ</label>
+                            <input type="password" name="password1" required>
+                        </p>
+                        <p>
+                            <label>ПОДТВЕРЖДЕНИЕ ПАРОЛЯ</label>
+                            <input type="password" name="password2" required>
+                        </p>
+                        <button type="submit" name="register_submit" class="btn-primary">СОЗДАТЬ АККАУНТ</button>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="{% static 'LOLGuide/js/auth.js' %}"></script>
+    
+    <script>
+        // Используем переменную, чтобы JS не ругался на синтаксис Django
+        let hasRegisterErrors = "{{ register_form.errors|yesno:'true,false' }}";
+        
+        if (hasRegisterErrors === 'true') {
+            document.addEventListener("DOMContentLoaded", function() {
+                if (typeof switchTab === 'function') {
+                    switchTab('register');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

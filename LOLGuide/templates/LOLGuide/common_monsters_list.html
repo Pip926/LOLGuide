@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Архив Рунтерры | Лесные жители</title>
+    <link rel="stylesheet" href="{% static 'LOLGuide/css/common_monsters_list.css' %}">
+</head>
+<body class="monster-list-body">
+    <a href="{% url 'monsters_hub' %}" class="btn-back">НАЗАД</a>
+    <main class="viewport-wrapper">
+        
+        <aside class="sidebar-jungle"></aside>
+
+        <button class="nav-btn prev" id="prevBtn">←</button>
+        <button class="nav-btn next" id="nextBtn">→</button>
+
+        <section class="monsters-container">
+            {% for monster in monsters %}
+            <article class="monster-item">
+                <a href="{% url 'monster_detail' monster.id %}" class="monster-link">
+                    <div class="monster-visual">
+                        <img src="{{ monster.image.url }}" alt="{{ monster.name }}" class="monster-img">
+                    </div>
+
+                    <header class="monster-header">
+                        <h2 class="monster-name">{{ monster.name }}</h2>
+                    </header>
+                </a>
+            </article>
+            {% endfor %}
+        </section>
+    </main>
+
+    <script src="{% static 'LOLGuide/js/common_monsters_list.js' %}"></script>
+</body>
+</html>

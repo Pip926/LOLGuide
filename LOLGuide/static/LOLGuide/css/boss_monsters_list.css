@@ -1,0 +1,142 @@
+.boss-list-body {
+  margin: 0;
+  background-color: #010a13;
+  color: white;
+  font-family: "BeaufortforLOL", sans-serif;
+  overflow: hidden;
+}
+
+.viewport-wrapper {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+.sidebar-jungle {
+  flex: 0 0 450px;
+  height: 100%;
+  position: relative;
+  background-image: url("../images/jng_backgr_purp.jpg");
+  background-size: cover;
+  background-position: center;
+  border-right: 2px solid rgba(240, 230, 210, 0.2);
+  z-index: 2;
+}
+
+.boss-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  gap: 30px;
+  padding: 0 120px;
+  background-color: #f0e6d2;
+}
+.boss-container::-webkit-scrollbar {
+  display: none;
+}
+.boss-container {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.boss-item {
+  flex: 0 0 350px;
+  height: 550px;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+.boss-item:hover {
+  transform: translateY(-10px);
+}
+.boss-item .boss-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  border-radius: 40px;
+  overflow: hidden;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+.boss-item .boss-visual {
+  width: 100%;
+  height: 100%;
+}
+.boss-item .boss-visual .boss-img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.boss-item .boss-header {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  align-items: flex-end;
+  padding: 25px;
+  box-sizing: border-box;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, transparent 100%);
+}
+.boss-item .boss-header .boss-name {
+  margin: 0;
+  color: #fff;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #f0e6d2;
+  border: 2px solid #f0e6d2;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 100;
+  transition: all 0.2s ease;
+}
+.nav-btn:hover {
+  background: #f0e6d2;
+  color: #000;
+}
+.nav-btn.prev {
+  left: 480px;
+}
+.nav-btn.next {
+  right: 20px;
+}
+
+.btn-back {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 14px;
+  color: #a78134;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 8px 20px;
+  border: 1px solid #a78134;
+  background: rgba(0, 0, 0, 0.7);
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+.btn-back:hover {
+  color: #f0e6d2;
+  border-color: #f0e6d2;
+  background: rgba(200, 170, 110, 0.1);
+  box-shadow: 0 0 10px rgba(200, 170, 110, 0.3);
+  transform: translateX(-5px);
+}/*# sourceMappingURL=boss_monsters_list.css.map */

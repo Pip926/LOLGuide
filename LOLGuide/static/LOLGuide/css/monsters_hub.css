@@ -1,0 +1,130 @@
+body {
+  background-color: #010a13;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../images/runterra.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: white;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.hub-container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 150px;
+  padding: 40px;
+}
+.hub-container .monster-card {
+  text-decoration: none;
+  width: 320px;
+  height: 480px;
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.hub-container .monster-card:hover {
+  transform: scale(1.1);
+}
+.hub-container .monster-card .card-inner {
+  width: 320px;
+  height: 480px;
+  background: #f0e6d2;
+  border: 10px solid #a78134;
+  border-radius: 10px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+.hub-container .monster-card .card-inner::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -150%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 100%);
+  transform: rotate(30deg);
+  transition: 0.6s;
+}
+.hub-container .monster-card:hover .card-inner::after {
+  left: 100%;
+}
+
+.card-art {
+  width: 100%;
+  height: 230px;
+  border: 3px solid #a78134;
+  background-size: cover;
+  background-position: center;
+  border-bottom: 5px solid #a78134;
+  border-radius: 4px;
+}
+
+.card-title-plate {
+  background: #a78134;
+  border-bottom: 5px solid #a78134;
+  border: 2px solid #a78134;
+  margin: 15px 0;
+  padding: 10px;
+  text-align: center;
+}
+.card-title-plate h2 {
+  color: black;
+  margin: 0;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.card-description {
+  padding: 20px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.card-description p {
+  color: black;
+  font-weight: bold;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.card-common .card-art {
+  background-image: url("../images/scuttle_card.jpg");
+}
+
+.card-boss .card-art {
+  background-image: url("../images/herald_card.jpg");
+}
+
+.btn-back {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 14px;
+  color: #a78134;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 8px 20px;
+  border: 1px solid #a78134;
+  background: rgba(0, 0, 0, 0.7);
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+.btn-back:hover {
+  color: #f0e6d2;
+  border-color: #f0e6d2;
+  background: rgba(200, 170, 110, 0.1);
+  box-shadow: 0 0 10px rgba(200, 170, 110, 0.3);
+  transform: translateX(-5px);
+}/*# sourceMappingURL=monsters_hub.css.map */

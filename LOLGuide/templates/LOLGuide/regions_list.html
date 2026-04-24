@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Архив Рунтерры | Список регионов</title>
+    <link rel="stylesheet" href="{% static 'LOLGuide/css/regions_list.css' %}">
+</head>
+<body class="regions-list-body">
+    <a href="{% url 'index' %}" class="btn-back">НАЗАД</a>
+    <main class="viewport-wrapper">
+        
+        <aside class="sidebar-regions"></aside>
+
+        <button class="nav-btn prev" id="prevBtn">←</button>
+        <button class="nav-btn next" id="nextBtn">→</button>
+
+        <section class="regions-container">
+            {% for region in regions %}
+            <article class="regions-item">
+                <a href="{% url 'region_detail' region.id %}" class="region-link">
+                    <div class="region-visual">
+                        <img src="{{ region.emblem.url }}" alt="{{ region.name }}" class="region-img">
+                    </div>
+
+                    <header class="region-header">
+                        <h2 class="region-name">{{ region.get_name_display }}</h2>
+                    </header>
+                </a>
+            </article>
+            {% endfor %}
+        </section>
+    </main>
+
+    <script src="{% static 'LOLGuide/js/regions_list.js' %}"></script>
+</body>
+</html>

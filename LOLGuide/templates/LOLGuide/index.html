@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="stylesheet" href="{% static 'LOLGuide/css/style.css' %}">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Архив Рунтерры | Главная</title>
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo-wrapper">
+            <h1 class="main-title">АРХИВ РУНТЕРРЫ</h1>
+        </div>
+
+        <nav class="auth-navigation">
+            {% if user.is_authenticated %}
+                <div class="user-profile">
+                    <span class="user-name">{{ user.username|upper }}</span>
+                    <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-auth btn-logout">ВЫЙТИ</button>
+                    </form>
+                </div>
+            {% else %}
+                <a href="{% url 'authorization' %}" class="btn-auth">ВОЙТИ</a>
+                <a href="{% url 'authorization' %}" class="btn-auth btn-signup">ЗАРЕГИСТРИРОВАТЬСЯ</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <main>
+        <section class="carousel-menu">
+            <button class="nav-arrow" id="prevBtn">&lt;</button>
+
+            <div class="carousel-track">
+                <article class="menu-card">
+                    <a href="{% url 'regions_list' %}">
+                        <img src="{% static 'LOLGuide/images/world.png' %}" alt="World">
+                        <span>ЛОР И МИР</span>
+                    </a>
+                </article>
+
+                <article class="menu-card">
+                    <a href="{% url 'champions_list' %}">
+                        <img src="{% static 'LOLGuide/images/champion.png' %}" alt="Champions">
+                        <span>ЧЕМПИОНЫ</span>
+                    </a>
+                </article>
+
+                <article class="menu-card">
+                    <a href="{% url 'items_list' %}">
+                        <img src="{% static 'LOLGuide/images/items.png' %}" alt="Items">
+                        <span>ОРУЖИЯ</span>
+                    </a>
+                </article>
+
+                <article class="menu-card">
+                    <a href="{% url 'monsters_hub' %}">
+                        <img src="{% static 'LOLGuide/images/jungle.png' %}" alt="Monster_hub">
+                        <span>ЛЕСНЫЕ МОНСТРЫ</span>
+                    </a>
+                </article>
+            </div>
+
+            <button class="nav-arrow" id="nextBtn">&gt;</button>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <a href="https://www.leagueoflegends.com/ru-ru/" target="_blank">
+            <img src="{% static 'LOLGuide/images/lol_logo.png' %}" alt="League of Legends">
+        </a>
+    </footer>
+
+    <script src="{% static 'LOLGuide/js/carousel.js' %}"></script>
+</body>
+</html>

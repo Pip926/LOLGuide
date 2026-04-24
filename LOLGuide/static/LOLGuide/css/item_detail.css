@@ -1,0 +1,129 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.background-map {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/runterra.jpg") center/cover;
+  z-index: -1;
+}
+
+.item-detail-layout {
+  display: grid;
+  grid-template-columns: 350px 750px;
+  grid-template-rows: 100px 450px;
+  grid-template-areas: "icon title" "stats lore";
+  gap: 20px;
+  width: 1120px;
+  height: 570px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.item-name-card, .item-stats-card, .item-lore-card {
+  background-color: #f0e6d2;
+  border: 2px solid #a78134;
+  padding: 20px;
+  color: #010A13;
+  box-sizing: border-box;
+}
+
+.item-icon-frame {
+  grid-area: icon;
+  width: 350px;
+  height: 350px;
+  border: 4px solid #f0e6d2;
+  background: #000;
+}
+.item-icon-frame img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.item-name-card {
+  grid-area: title;
+  display: flex;
+  align-items: center;
+}
+.item-name-card h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+}
+
+.item-stats-card {
+  grid-area: stats;
+  margin-top: 270px;
+  height: 180px;
+  font-weight: bold;
+}
+
+.item-lore-card {
+  grid-area: lore;
+  height: 450px;
+}
+.item-lore-card .lore-scroll-box {
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 10px;
+  line-height: 1.6;
+}
+.item-lore-card .lore-scroll-box::-webkit-scrollbar {
+  width: 6px;
+}
+.item-lore-card .lore-scroll-box::-webkit-scrollbar-thumb {
+  background: #010A13;
+}
+
+.back-link {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  background: #010A13;
+  color: #f0e6d2;
+  padding: 8px 15px;
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid #f0e6d2;
+  z-index: 100;
+}
+.back-link:hover {
+  background: #a78134;
+  color: #000;
+}
+
+.btn-back {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 14px;
+  color: #a78134;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 8px 20px;
+  border: 1px solid #a78134;
+  background: rgba(0, 0, 0, 0.7);
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+.btn-back:hover {
+  color: #f0e6d2;
+  border-color: #f0e6d2;
+  background: rgba(200, 170, 110, 0.1);
+  box-shadow: 0 0 10px rgba(200, 170, 110, 0.3);
+  transform: translateX(-5px);
+}/*# sourceMappingURL=item_detail.css.map */
