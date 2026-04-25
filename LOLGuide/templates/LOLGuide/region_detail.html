@@ -1,11 +1,37 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Архив Рунтерры | {{ region.get_name_display }}</title>
+    <link rel="stylesheet" href="{% static 'LOLGuide/css/region_detail.css' %}">
 </head>
-<body>
-    <h1>region</h1>
+<body style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('{{ region.background.url }}');">
+
+    <a href="{% url 'regions_list' %}" class="btn-back">НАЗАД</a>
+    
+    <main class="region-container">
+        <header class="region-header">
+            <h1 class="region-title">{{ region.get_name_display }}</h1>
+        </header>
+
+        <div class="region-content-layout">
+            <aside class="region-sidebar">
+                <div class="region-crest">
+                    <img src="{{ region.emblem.url }}" alt="Герб {{ region.name }}">
+                </div>
+
+                <div class="region-slogan-box">
+                    <p>«{{ region.tagline }}»</p>
+                </div>
+            </aside>
+
+            <section class="region-info-section">
+                <article class="region-article">
+                    {{ region.description|linebreaks }}
+                </article>
+            </section>
+        </div>
+    </main>
 </body>
 </html>

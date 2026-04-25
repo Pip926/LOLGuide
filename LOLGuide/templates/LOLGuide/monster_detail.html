@@ -1,11 +1,49 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Архив Рунтерры | Детали монстра</title>
+    <link rel="stylesheet" href="{% static 'LOLGuide/css/monster_detail.css' %}">
 </head>
 <body>
-    <h1>wviwovnwpvn</h1>
+    <a href="{% url 'common_monsters_list' %}" class="btn-back">НАЗАД</a>
+
+    <main class="monster-detail-container">
+        <header class="monster-header">
+            <h1 class="monster-title">{{ monster.name }}</h1>
+        </header>
+
+        <div class="monster-content-layout">
+        
+            <aside class="monster-sidebar">
+                <figure class="monster-image-frame">
+                    {% if monster.image %}
+                        <img src="{{ monster.image.url }}" alt="{{ monster.name }}">
+                    {% else %}
+                        <p>Фото отсутствует</p>
+                    {% endif %}
+                </figure>
+
+                <nav class="monster-tabs-nav">
+                    <button class="tab-btn active" data-tab="lore">ИСТОРИЯ</button>
+                    <button class="tab-btn" data-tab="buff">БАФФЫ</button>
+                </nav>
+            </aside>
+
+            <section class="monster-info-section">
+                <article id="text-lore" class="monster-article">
+                    {{ monster.description|linebreaks }}
+                </article>
+            
+                <article id="text-buff" class="monster-article" style="display: none;">
+                    {{ monster.buff_description|linebreaks }}
+                </article>
+            </section>
+
+        </div>
+    </main>
+    <script src="{% static 'LOLGuide/js/monster_detail.js' %}"></script>
 </body>
 </html>

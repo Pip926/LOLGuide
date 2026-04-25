@@ -1,11 +1,49 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Архив Рунтерры | Детали босса</title>
+    <link rel="stylesheet" href="{% static 'LOLGuide/css/boss_detail.css' %}">
 </head>
 <body>
-    <h1>boss detail</h1>
+    <a href="{% url 'boss_monsters_list' %}" class="btn-back">НАЗАД</a>
+
+    <main class="boss-detail-container">
+        <header class="boss-header">
+            <h1 class="boss-title">{{ boss.name }}</h1>
+        </header>
+
+        <div class="boss-content-layout">
+        
+            <aside class="boss-sidebar">
+                <figure class="boss-image-frame">
+                    {% if boss.image %}
+                        <img src="{{ boss.image.url }}" alt="{{ boss.name }}">
+                    {% else %}
+                        <p>Фото отсутствует</p>
+                    {% endif %}
+                </figure>
+
+                <nav class="boss-tabs-nav">
+                    <button class="tab-btn active" data-tab="lore">ИСТОРИЯ</button>
+                    <button class="tab-btn" data-tab="buff">БАФФЫ</button>
+                </nav>
+            </aside>
+
+            <section class="boss-info-section">
+                <article id="text-lore" class="boss-article">
+                    {{ boss.description|linebreaks }}
+                </article>
+            
+                <article id="text-buff" class="boss-article" style="display: none;">
+                    {{ boss.buff_description|linebreaks }}
+                </article>
+            </section>
+
+        </div>
+    </main>
+    <script src="{% static 'LOLGuide/js/boss_detail.js' %}"></script>
 </body>
 </html>

@@ -1,0 +1,129 @@
+@import 'variables';
+
+body {
+    background-color: $dark-bg;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/runterra.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+    font-family: sans-serif;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden; 
+}
+
+.boss-detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+    height: 100vh; 
+    box-sizing: border-box;
+    display: grid;
+    grid-template-rows: auto 1fr; 
+    gap: 20px;
+    overflow: hidden; 
+
+    .boss-header {
+        border-bottom: 2px solid $gold-dark;
+        padding-bottom: 10px;
+        
+        .boss-title {
+            font-size: 2.5rem;
+            color: $gold-bright;
+            text-transform: uppercase;
+            margin: 0;
+        }
+    }
+
+    .boss-content-layout {
+        display: grid;
+        grid-template-columns: 350px 1fr;
+        gap: 40px;
+        min-height: 0;
+        height: 100%;
+
+        .boss-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            
+            .boss-image-frame {
+                border: 1px solid $gold-dark;
+                background-color: rgba($dark-bg, 0.5);
+                img {
+                    width: 100%;
+                    height: auto;
+                    display: block;
+                }
+            }
+
+            .boss-tabs-nav {
+                display: flex;
+                gap: 10px;
+
+                .tab-btn {
+                    flex: 1;
+                    background: $dark-bg;
+                    border: 1px solid $gold-dark;
+                    color: $gold-dark;
+                    padding: 10px;
+                    cursor: pointer;
+                    text-transform: uppercase;
+
+                    &.active {
+                        background: $gold-dark;
+                        color: $dark-bg;
+                    }
+                }
+            }
+        }
+
+        .boss-info-section {
+            background-color: rgba($dark-bg, 0.8);
+            border: 1px solid rgba($gold-dark, 0.3);
+            padding: 30px;
+            
+            height: 100%;
+            overflow-y: auto; 
+            box-sizing: border-box;
+
+            .boss-article {
+                p {
+                    margin-bottom: 20px;
+                    color: $gold-bright;
+                    line-height: 1.8;
+                }
+            }
+
+            &::-webkit-scrollbar { width: 4px; }
+            &::-webkit-scrollbar-thumb { background: $gold-dark; }
+        }
+    }
+}
+
+.btn-back {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 14px;
+    color: $gold-dark;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 8px 20px;
+    border: 1px solid $gold-dark;
+    background: rgba(0, 0, 0, 0.7);
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    z-index: 1000;
+
+    &:hover {
+        color: $gold-bright;
+        border-color: $gold-bright;
+        background: rgba(200, 170, 110, 0.1);
+        box-shadow: 0 0 10px rgba(200, 170, 110, 0.3);
+        transform: translateX(-5px); 
+    }
+}

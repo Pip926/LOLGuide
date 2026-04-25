@@ -1,11 +1,87 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Архив Рунтерры | {{ champion.name }}</title>
+    <link rel="stylesheet" href="{% static 'LOLGuide/css/champion_detail.css' %}">
 </head>
-<body>
-    <h1>22v92tmv93t</h1>
+<body style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('{{ champion.region.background.url }}');">
+
+    <a href="{% url 'champions_list' %}" class="btn-back">НАЗАД</a>
+
+    <main class="champion-interface">
+        
+        <header class="champ-info-bar">
+            <div class="name-wrapper">
+                <h1 class="champ-name">{{ champion.name }}</h1>
+                <h2 class="champ-title">{{ champion.title }}</h2>
+            </div>
+            <div class="meta-wrapper">
+                <span class="meta-item region-tag">{{ champion.region.get_name_display }}</span>
+                <span class="meta-item role-tag">{{ champion.get_role_display }}</span>
+            </div>
+            <nav class="main-controls">
+                <button class="control-btn active" data-target="splash">СПЛЕШ-АРТ</button>
+                <button class="control-btn" data-target="lore">ИСТОРИЯ</button>
+            </div>
+        </header>
+
+        <div class="interface-grid">
+            
+            <section class="viewport-display">
+                <figure id="view-splash" class="view-content active">
+                    <img src="{{ champion.image_main.url }}" alt="{{ champion.name }}">
+                </figure>
+
+                <article id="view-lore" class="view-content" style="display: none;">
+                    <div class="scroll-container">
+                        {{ champion.lore|linebreaks }}
+                    </div>
+                </article>
+
+                <article id="view-ability" class="view-content" style="display: none;">
+                    <div class="scroll-container">
+                        <h3 id="ability-caption"></h3>
+                        <p id="ability-body"></p>
+                    </div>
+                </article>
+
+                <article id="view-items-info" class="view-content" style="display: none;">
+                    <div class="scroll-container">
+                        <h3>Почему это лучший выбор?</h3>
+                        {{ champion.items_reasoning|linebreaks }}
+                    </div>
+                </article>
+            </section>
+
+            <aside class="ability-sidebar">
+                {% for ability in champion.abilities.all %}
+                <button class="ability-slot" 
+                        data-target="ability" 
+                        data-name="{{ ability.name }}" 
+                        data-text="{{ ability.description }}">
+                    <img src="{{ ability.image.url }}" alt="{{ ability.name }}">
+                </button>
+                {% endfor %}
+            </aside>
+
+            <footer class="equipment-bar">
+                <div class="items-group">
+                    <h3 class="group-title">ЛУЧШИЙ ВЫБОР ОРУЖИЯ</h3>
+                    <div class="items-icons">
+                        <img src="{{ champion.item_slot_1.image.url }}" title="{{ champion.item_slot_1.name }}">
+                        <img src="{{ champion.item_slot_2.image.url }}" title="{{ champion.item_slot_2.name }}">
+                        <img src="{{ champion.item_slot_3.image.url }}" title="{{ champion.item_slot_3.name }}">
+                    </div>
+                </div>
+                <button class="control-btn why-btn" data-target="items-info">ПОЧЕМУ ЭТО ЛУЧШИЙ ВЫБОР?</button>
+            </footer>
+
+        </div>
+    </main>
+
+    <script src="{% static 'LOLGuide/js/champion_detail.js' %}"></script>
+
 </body>
 </html>

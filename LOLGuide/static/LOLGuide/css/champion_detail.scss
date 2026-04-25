@@ -1,0 +1,222 @@
+@import 'variables';
+
+body {
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: sans-serif;
+}
+
+.champion-interface {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 30px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+
+    .champ-info-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        border-bottom: 2px solid $gold-dark;
+        padding-bottom: 15px;
+        margin-bottom: 20px;
+
+        .name-wrapper {
+            .champ-name {
+                font-size: 3.5rem;
+                color: $gold-bright;
+                text-transform: uppercase;
+                margin: 0;
+                line-height: 1;
+            }
+            .champ-title {
+                font-size: 1.2rem;
+                color: $gold-dark;
+                font-style: italic;
+                margin: 5px 0 0 0;
+            }
+        }
+
+        .meta-wrapper {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 5px;
+
+            .meta-item {
+                border: 1px solid $gold-dark;
+                padding: 5px 15px;
+                background: rgba($dark-bg, 0.5);
+                color: $gold-bright;
+                text-transform: uppercase;
+                font-size: 0.9rem;
+            }
+        }
+
+        .main-controls {
+            display: flex;
+            gap: 10px;
+        }
+    }
+
+    .interface-grid {
+        display: grid;
+        grid-template-columns: 1fr 100px; 
+        grid-template-rows: 1fr auto;   
+        gap: 20px;
+        flex: 1;
+        min-height: 0; 
+
+        .viewport-display {
+            grid-column: 1;
+            grid-row: 1;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba($gold-dark, 0.2);
+            position: relative;
+            overflow: hidden;
+
+            .view-content {
+                width: 100%;
+                height: 100%;
+                display: none; 
+                
+                &.active { display: block; } 
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover; 
+                }
+
+                .scroll-container {
+                    padding: 40px;
+                    height: 100%;
+                    overflow-y: auto;
+                    box-sizing: border-box;
+                    color: white;
+                    line-height: 1.6;
+
+                    h3 { color: $gold-bright; text-transform: uppercase; margin-top: 0; }
+                    
+                    &::-webkit-scrollbar { width: 4px; }
+                    &::-webkit-scrollbar-thumb { background: $gold-dark; }
+                }
+            }
+        }
+
+        .ability-sidebar {
+            grid-column: 2;
+            grid-row: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+
+            .ability-slot {
+                width: 80px;
+                height: 80px;
+                background: $dark-bg;
+                border: 2px solid $gold-dark;
+                cursor: pointer;
+                padding: 0;
+                transition: transform 0.2s;
+
+                img { width: 100%; height: 100%; display: block; }
+                
+                &:hover, &.active {
+                    border-color: $gold-bright;
+                    transform: scale(1.05);
+                    box-shadow: 0 0 15px rgba($gold-bright, 0.4);
+                }
+            }
+        }
+
+        .equipment-bar {
+            grid-column: 1 / span 2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba($dark-bg, 0.8);
+            border-top: 1px solid $gold-dark;
+            padding: 15px 30px;
+
+            .items-group {
+                display: flex;
+                align-items: center;
+                gap: 30px;
+
+                .group-title {
+                    color: $gold-dark;
+                    font-size: 0.9rem;
+                    margin: 0;
+                    text-transform: uppercase;
+                }
+
+                .items-icons {
+                    display: flex;
+                    gap: 15px;
+                    img {
+                        width: 50px;
+                        height: 50px;
+                        border: 1px solid $gold-dark;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.control-btn {
+    background: transparent;
+    border: 1px solid $gold-dark;
+    color: $gold-dark;
+    padding: 8px 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 0.3s;
+
+    &:hover, &.active {
+        background: $gold-dark;
+        color: $dark-bg;
+    }
+
+    &.why-btn {
+        border-color: $gold-bright;
+        color: $gold-bright;
+        &:hover {
+            background: $gold-bright;
+            color: $dark-bg;
+        }
+    }
+}
+
+.btn-back {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 14px;
+    color: $gold-dark;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 8px 20px;
+    border: 1px solid $gold-dark;
+    background: rgba(0, 0, 0, 0.7);
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    z-index: 1000;
+
+    &:hover {
+        color: $gold-bright;
+        border-color: $gold-bright;
+        background: rgba(200, 170, 110, 0.1);
+        box-shadow: 0 0 10px rgba(200, 170, 110, 0.3);
+        transform: translateX(-5px); 
+    }
+}

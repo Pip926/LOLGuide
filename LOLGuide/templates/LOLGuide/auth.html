@@ -80,7 +80,6 @@
     <script src="{% static 'LOLGuide/js/auth.js' %}"></script>
     
     <script>
-        // Используем переменную, чтобы JS не ругался на синтаксис Django
         let hasRegisterErrors = "{{ register_form.errors|yesno:'true,false' }}";
         
         if (hasRegisterErrors === 'true') {

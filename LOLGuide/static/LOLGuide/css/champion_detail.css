@@ -1,0 +1,209 @@
+body {
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  font-family: sans-serif;
+}
+
+.champion-interface {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 30px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+.champion-interface .champ-info-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 2px solid #a78134;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+.champion-interface .champ-info-bar .name-wrapper .champ-name {
+  font-size: 3.5rem;
+  color: #f0e6d2;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1;
+}
+.champion-interface .champ-info-bar .name-wrapper .champ-title {
+  font-size: 1.2rem;
+  color: #a78134;
+  font-style: italic;
+  margin: 5px 0 0 0;
+}
+.champion-interface .champ-info-bar .meta-wrapper {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 5px;
+}
+.champion-interface .champ-info-bar .meta-wrapper .meta-item {
+  border: 1px solid #a78134;
+  padding: 5px 15px;
+  background: rgba(1, 10, 19, 0.5);
+  color: #f0e6d2;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+.champion-interface .champ-info-bar .main-controls {
+  display: flex;
+  gap: 10px;
+}
+.champion-interface .interface-grid {
+  display: grid;
+  grid-template-columns: 1fr 100px;
+  grid-template-rows: 1fr auto;
+  gap: 20px;
+  flex: 1;
+  min-height: 0;
+}
+.champion-interface .interface-grid .viewport-display {
+  grid-column: 1;
+  grid-row: 1;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(167, 129, 52, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+.champion-interface .interface-grid .viewport-display .view-content {
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+.champion-interface .interface-grid .viewport-display .view-content.active {
+  display: block;
+}
+.champion-interface .interface-grid .viewport-display .view-content img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.champion-interface .interface-grid .viewport-display .view-content .scroll-container {
+  padding: 40px;
+  height: 100%;
+  overflow-y: auto;
+  box-sizing: border-box;
+  color: white;
+  line-height: 1.6;
+}
+.champion-interface .interface-grid .viewport-display .view-content .scroll-container h3 {
+  color: #f0e6d2;
+  text-transform: uppercase;
+  margin-top: 0;
+}
+.champion-interface .interface-grid .viewport-display .view-content .scroll-container::-webkit-scrollbar {
+  width: 4px;
+}
+.champion-interface .interface-grid .viewport-display .view-content .scroll-container::-webkit-scrollbar-thumb {
+  background: #a78134;
+}
+.champion-interface .interface-grid .ability-sidebar {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.champion-interface .interface-grid .ability-sidebar .ability-slot {
+  width: 80px;
+  height: 80px;
+  background: #010a13;
+  border: 2px solid #a78134;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.2s;
+}
+.champion-interface .interface-grid .ability-sidebar .ability-slot img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.champion-interface .interface-grid .ability-sidebar .ability-slot:hover, .champion-interface .interface-grid .ability-sidebar .ability-slot.active {
+  border-color: #f0e6d2;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(240, 230, 210, 0.4);
+}
+.champion-interface .interface-grid .equipment-bar {
+  grid-column: 1/span 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(1, 10, 19, 0.8);
+  border-top: 1px solid #a78134;
+  padding: 15px 30px;
+}
+.champion-interface .interface-grid .equipment-bar .items-group {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.champion-interface .interface-grid .equipment-bar .items-group .group-title {
+  color: #a78134;
+  font-size: 0.9rem;
+  margin: 0;
+  text-transform: uppercase;
+}
+.champion-interface .interface-grid .equipment-bar .items-group .items-icons {
+  display: flex;
+  gap: 15px;
+}
+.champion-interface .interface-grid .equipment-bar .items-group .items-icons img {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #a78134;
+}
+
+.control-btn {
+  background: transparent;
+  border: 1px solid #a78134;
+  color: #a78134;
+  padding: 8px 20px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+.control-btn:hover, .control-btn.active {
+  background: #a78134;
+  color: #010a13;
+}
+.control-btn.why-btn {
+  border-color: #f0e6d2;
+  color: #f0e6d2;
+}
+.control-btn.why-btn:hover {
+  background: #f0e6d2;
+  color: #010a13;
+}
+
+.btn-back {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 14px;
+  color: #a78134;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 8px 20px;
+  border: 1px solid #a78134;
+  background: rgba(0, 0, 0, 0.7);
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+.btn-back:hover {
+  color: #f0e6d2;
+  border-color: #f0e6d2;
+  background: rgba(200, 170, 110, 0.1);
+  box-shadow: 0 0 10px rgba(200, 170, 110, 0.3);
+  transform: translateX(-5px);
+}/*# sourceMappingURL=champion_detail.css.map */
