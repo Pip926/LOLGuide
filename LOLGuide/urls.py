@@ -6,6 +6,7 @@ urlpatterns = [
     path('champions/', views.champions_list, name='champions_list'),
     path('champion/<int:pk>/', views.champion_detail, name='champion_detail'),
     path('authorization/', views.auth_view, name='authorization'),
+    path('profile/', views.profile_view, name='profile'),
     path('regions/', views.regions_list, name='regions_list'),
     path('region/<int:pk>/', views.region_detail, name='region_detail'),
     path('items/', views.items_list, name='items_list'),

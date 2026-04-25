@@ -2,11 +2,10 @@ from django.shortcuts import render, redirect, get_object_or_404 # type: ignore
 from .models import Champion, Item, Region, JungleMonsters
 from django.contrib.auth import login as auth_login
 from django.contrib.auth.forms import AuthenticationForm
-from .forms import RegisterForm
-
+from django.contrib.auth.decorators import login_required
+from .forms import RegisterForm, ProfileUpdateForm
 
 def auth_view(request):
-    # Инициализируем формы
     login_form = AuthenticationForm()
     register_form = RegisterForm()
 
@@ -17,21 +16,31 @@ def auth_view(request):
                 user = login_form.get_user()
                 auth_login(request, user) 
                 return redirect('index')
-            # Если login_form невалидна, она сама сохранит ошибки внутри себя
 
         elif 'register_submit' in request.POST:
             register_form = RegisterForm(request.POST)
             if register_form.is_valid():
-                user = register_form.save() # Теперь это сработает и сохранит в БД
+                user = register_form.save() 
                 auth_login(request, user)
                 return redirect('index')
-            # Если здесь ошибка (пароль слабый или юзер есть), 
-            # register_form теперь содержит список этих ошибок.
+    
 
     return render(request, 'LOLGuide/auth.html', {
         'login_form': login_form,
         'register_form': register_form
     })
+
+@login_required
+def profile_view(request):
+    if request.method == 'POST':
+        form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = ProfileUpdateForm(instance=request.user.profile)
+
+    return render(request, 'LOLGuide/profile.html', {'form': form})
 
 def index(request):
     return render(request, 'LOLGuide/index.html')

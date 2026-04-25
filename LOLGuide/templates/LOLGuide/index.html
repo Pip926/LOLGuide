@@ -17,7 +17,10 @@
         <nav class="auth-navigation">
             {% if user.is_authenticated %}
                 <div class="user-profile">
-                    <span class="user-name">{{ user.username|upper }}</span>
+                    <a href="{% url 'profile' %}" class="user-link">
+                        <span class="user-name">{{ user.username|upper }}</span>
+                    </a>
+                    
                     <form action="{% url 'logout' %}" method="post" style="display: inline;">
                         {% csrf_token %}
                         <button type="submit" class="btn-auth btn-logout">ВЫЙТИ</button>

@@ -1,11 +1,53 @@
 from django.db import models # type: ignore
 from django.contrib.auth.models import User # type: ignore
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="Пользователь")
+
+    favourite_champion = models.ForeignKey(
+        'Champion',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        verbose_name="Любимый чемпион"
+    )
+
+    favourite_region = models.ForeignKey(
+        'Region',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        verbose_name="Любимый регион"
+    )
+
+    avatar = models.ImageField(
+        "Аватар",
+        upload_to='profiles/avatars/',
+        default='profiles/avatars/PFP_default.jpg',
+        null=True,
+        blank=True
+    )
+
+    bio = models.TextField(
+        "О себе", 
+        max_length=500, 
+        blank=True
+    )
 
     def __str__(self):
         return f"Профиль для {self.user.username}"
+    
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.get_or_create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    if hasattr(instance, 'profile'):
+        instance.profile.save()
 
 class Region(models.Model):
     REGION_CHOICES = [

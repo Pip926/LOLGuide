@@ -1,0 +1,126 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #010a13;
+  color: #f0e6d2;
+  font-family: "Beaufort", sans-serif;
+  overflow: hidden;
+}
+
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.btn-back {
+  align-self: flex-start;
+  color: #a78134;
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-size: 14px;
+}
+.btn-back:hover {
+  color: #f0e6d2;
+}
+
+.profile-container {
+  width: 100%;
+  max-width: 450px;
+  margin: auto;
+}
+
+.user-card {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.user-card .avatar-wrapper {
+  width: 110px;
+  height: 110px;
+  margin: 0 auto 10px;
+  border: 1px solid #a78134;
+  padding: 3px;
+}
+.user-card .avatar-wrapper .profile-avatar {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.user-card .username {
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin: 0;
+}
+
+.profile-form .form-content p {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+  font-size: 0;
+  color: transparent;
+}
+.profile-form .form-content p label, .profile-form .form-content p input, .profile-form .form-content p select, .profile-form .form-content p textarea {
+  font-size: 14px;
+}
+.profile-form .form-content p label {
+  display: block;
+  color: #a78134;
+  text-transform: uppercase;
+  font-size: 11px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.profile-form .form-content p input[type=checkbox],
+.profile-form .form-content p label[for*=-clear_id],
+.profile-form .form-content p a, .profile-form .form-content p br {
+  display: none !important;
+}
+.profile-form .form-content p input[type=text],
+.profile-form .form-content p input[type=file],
+.profile-form .form-content p select,
+.profile-form .form-content p textarea {
+  display: block !important;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid #a78134;
+  color: #f0e6d2;
+  padding: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+.profile-form .form-content p input[type=text] option,
+.profile-form .form-content p input[type=file] option,
+.profile-form .form-content p select option,
+.profile-form .form-content p textarea option {
+  background: #010a13;
+  color: #f0e6d2;
+}
+.profile-form .form-content p textarea {
+  height: 60px;
+  resize: none;
+}
+
+.btn-save {
+  width: 100%;
+  background: #a78134;
+  color: #010a13;
+  border: 1px solid #f0e6d2;
+  padding: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 5px;
+  letter-spacing: 2px;
+  transition: background 0.3s;
+}
+.btn-save:hover {
+  background: #f0e6d2;
+}/*# sourceMappingURL=profile.css.map */

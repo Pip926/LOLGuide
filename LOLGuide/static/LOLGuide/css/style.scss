@@ -42,38 +42,53 @@ body {
         font-size: 24px;
     }
 
-    .auth-navigation .btn-auth {
-        font-size: 12px;
-        color: $gold-dark; 
-        text-transform: uppercase;
-        padding: 8px 15px;
-        border: 1px solid $gold-dark;
-        text-decoration: none;
-        margin-left: 10px;
-    }
-
-    .user-info {
+    .auth-navigation {
         display: flex;
         align-items: center;
 
-        .user-name {
-            color: $gold-dark; 
-            font-size: 14px;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-right: 15px;
-            letter-spacing: 1px;
+        .user-profile {
+            display: flex;
+            align-items: center;
+
+            .user-link {
+                text-decoration: none; 
+
+                .user-name {
+                    color: $gold-dark; 
+                    font-size: 14px;
+                    text-transform: uppercase;
+                    margin-right: 15px;
+                    letter-spacing: 1px;
+                    
+                    border: 1px solid $gold-dark;
+                    padding: 8px 15px;
+                    transition: 0.3s;
+
+                    &:hover {
+                        background-color: rgba(200, 170, 110, 0.1);
+                        color: $gold-bright;
+                        border-color: $gold-bright;
+                    }
+                }
+            }
         }
 
         .btn-auth {
+            font-size: 12px;
+            color: $gold-dark; 
+            text-transform: uppercase;
+            padding: 8px 15px;
+            border: 1px solid $gold-dark;
+            text-decoration: none;
+            margin-left: 10px;
             background: none;
             cursor: pointer;
             transition: 0.3s;
             
-            
             &:hover {
                 background-color: rgba(200, 170, 110, 0.1);
                 color: $gold-bright;
+                border-color: $gold-bright;
             }
         }
     }
@@ -86,7 +101,6 @@ body {
     justify-content: center;
     img { width: 120px; opacity: 0.6; }
 }
-
 
 main {
     flex: 1;
@@ -113,7 +127,6 @@ main {
         transition: 0.3s;
         &:hover { color: $gold-bright; transform: scale(1.2); }
         
-        // Позиционируем стрелки по бокам
         &#prevBtn { margin-right: 450px; }
         &#nextBtn { margin-left: 450px; }
     }
@@ -161,7 +174,6 @@ main {
         font-weight: bold;
         font-size: 14px;
     }
-
 
     &.pos-1 {
         transform: translateZ(100px) scale(1.2); 
